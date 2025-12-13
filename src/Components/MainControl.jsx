@@ -15,11 +15,18 @@ export const MainControl = () => {
   };
 
   /*------------------  TO LIST  addList  ---------------------*/
-  const shopList = [];
+  const [shopList, setShopList] = useState([]);
   const addList = (e) => {
     e.preventDefault();
     const productName = e.target.elements._productName.value;
-    shopList.push({ productName: productName, cantidad: cantidad });
+    //shopList.push({ productName: productName, cantidad: cantidad });
+    setShopList([
+      ...shopList /*tomar lo que se va acumulando*/,
+      {
+        productName: productName,
+        cantidad: cantidad,
+      } /*agregar con el setter*/,
+    ]);
     console.log(shopList);
   };
   /*------------------------SHOW LIST---------------------*/
@@ -34,6 +41,13 @@ export const MainControl = () => {
         <input type="text" placeholder="Product" name="_productName" />
         <input type="submit" value="Add" />
       </form>
+      <hr />
+      <h3>Shopping List</h3>
+      {shopList.map((item, index) => (
+        <p key={index}>
+          {item.productName} - {item.cantidad}
+        </p>
+      ))}
     </div>
   );
 };
