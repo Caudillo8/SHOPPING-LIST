@@ -7,6 +7,8 @@ function App() {
   return (
     <>
       <MainControl />
+      <br />
+      <hr />
     </>
   );
 }
