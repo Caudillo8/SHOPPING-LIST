@@ -30,6 +30,13 @@ export const MainControl = () => {
     ]);
     console.log(shopList);
   };
+  /*------------------  R E S E T ---------------------*/
+  const toReset = (e) => {
+    e.preventDefault();
+    //setShopList([{ productName: "", cantidad: 0 }]);
+    setShopList([]);
+    setCount(0);
+  };
   /*------------------------SHOW LIST---------------------*/
 
   /*-------------------RETURN-------------*/
@@ -48,16 +55,24 @@ export const MainControl = () => {
       <div>
         <h3>Shopping List</h3>
         <br />
-        {shopList.map((item, index) => (
-          <ol type="1" key={index}>
-            <li value={index + 1} name="itemList">
-              <b>Cant :</b> {item.cantidad}
-              <b> Producto: </b> {item.productName}
-              <input type="checkbox" />
-            </li>
-          </ol>
-        ))}
-        <input type="button" value="Reset" />
+        {shopList.map((item, index) =>
+          shopList.length === 1 && item.productName === "" ? (
+            <p>No items in the list</p>
+          ) : (
+            <ol type="1" key={index}>
+              <li value={index + 1} name="itemList" id="itemList">
+                <b>Cant :</b> {item.cantidad}
+                <b> Producto: </b> {item.productName}
+                <input
+                  className="check-box"
+                  type="checkbox"
+                  htmlFor="itemList"
+                />
+              </li>
+            </ol>
+          )
+        )}
+        <input type="button" value="Reset" onClick={toReset} />
       </div>
     </div>
   );

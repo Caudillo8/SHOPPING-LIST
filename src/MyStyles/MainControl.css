@@ -7,10 +7,14 @@
   width: 25%;
   margin: auto;
   min-height: fit-content;
-  background-color: rgb(90, 116, 124);
+  background-color: rgb(154, 204, 62);
   padding: 20px;
   border: solid black 2px;
 }
-.itemList {
+#itemList {
   background-color: yellow;
+}
+#itemList:has(.check-box:checked) {
+  background-color: green;
+  color: gray;
 }
