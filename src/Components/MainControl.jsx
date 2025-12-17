@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "../MyStyles/MainControl.css";
 
 export const MainControl = () => {
   /*-------------------STATE CANTIDAD-------------*/
@@ -33,7 +34,7 @@ export const MainControl = () => {
 
   /*-------------------RETURN-------------*/
   return (
-    <div>
+    <div className="container_mayor">
       <form onSubmit={addList} name="formList" id="formList">
         <input type="button" value="+" onClick={sumar} />
         <span>{cantidad}</span>
@@ -41,13 +42,23 @@ export const MainControl = () => {
         <input type="text" placeholder="Product" name="_productName" />
         <input type="submit" value="Add" />
       </form>
+      <br />
       <hr />
-      <h3>Shopping List</h3>
-      {shopList.map((item, index) => (
-        <p key={index}>
-          {item.productName} - {item.cantidad}
-        </p>
-      ))}
+      <br />
+      <div>
+        <h3>Shopping List</h3>
+        <br />
+        {shopList.map((item, index) => (
+          <ol type="1" key={index}>
+            <li value={index + 1} name="itemList">
+              <b>Cant :</b> {item.cantidad}
+              <b> Producto: </b> {item.productName}
+              <input type="checkbox" />
+            </li>
+          </ol>
+        ))}
+        <input type="button" value="Reset" />
+      </div>
     </div>
   );
 };

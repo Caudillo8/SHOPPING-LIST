@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container_mayor {
+  width: 25%;
+  margin: auto;
+  min-height: fit-content;
+  background-color: rgb(90, 116, 124);
+  padding: 20px;
+  border: solid black 2px;
+}
+.itemList {
+  background-color: yellow;
+}
