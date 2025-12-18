@@ -4,12 +4,14 @@
   box-sizing: border-box;
 }
 .container_mayor {
-  width: 25%;
+  width: fit-content;
   margin: auto;
   min-height: fit-content;
   background-color: rgb(154, 204, 62);
   padding: 20px;
   border: solid black 2px;
+  margin-top: 50px;
+  border-radius: 20px;
 }
 #itemList {
   background-color: yellow;
@@ -17,4 +19,36 @@
 #itemList:has(.check-box:checked) {
   background-color: green;
   color: gray;
+}
+.button-cantidad {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 10px;
+  color: white;
+  background-color: red;
+  border-radius: 10px;
+  box-shadow: black 2px 2px 5px;
+}
+.button-reset,
+.button-add {
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 5px;
+  color: white;
+  background-color: blue;
+  border-radius: 10px;
+  box-shadow: black 2px 2px 5px;
+}
+.input-productName {
+  width: 120px;
+  height: 25px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  border: solid gray 1px;
+  margin-right: 10px;
 }

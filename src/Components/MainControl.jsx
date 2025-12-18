@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../MyStyles/MainControl.css";
+import _default from "eslint-plugin-react-refresh";
 
 export const MainControl = () => {
   /*-------------------STATE CANTIDAD-------------*/
@@ -28,27 +29,51 @@ export const MainControl = () => {
         cantidad: cantidad,
       } /*agregar con el setter*/,
     ]);
-    console.log(shopList);
+    /*showList(); este siempre lo muestra con el retraso del estado*/
+    formList.reset(); //el campo texto se limpia
+    setCount(initial_counter); //la cantidad se resetea
   };
   /*------------------  R E S E T ---------------------*/
-  const toReset = (e) => {
-    e.preventDefault();
-    //setShopList([{ productName: "", cantidad: 0 }]);
+  const toReset = () => {
     setShopList([]);
-    setCount(0);
+    setCount(initial_counter);
   };
   /*------------------------SHOW LIST---------------------*/
-
+  const showList = () => {
+    console.log(shopList);
+    if (shopList.length === 0) {
+      return "No items in the list";
+    }
+  };
   /*-------------------RETURN-------------*/
   return (
     <div className="container_mayor">
+      {/*------------------ FORMulario ---------------------*/}
       <form onSubmit={addList} name="formList" id="formList">
-        <input type="button" value="+" onClick={sumar} />
-        <span>{cantidad}</span>
-        <input type="button" value="-" onClick={restar} />
-        <input type="text" placeholder="Product" name="_productName" />
-        <input type="submit" value="Add" />
+        <input
+          type="button"
+          value="+"
+          onClick={sumar}
+          className="button-cantidad"
+        />
+        <span name="_cantidad">{cantidad}</span>
+        <input
+          type="button"
+          value="-"
+          onClick={restar}
+          className="button-cantidad"
+        />
+        <input
+          type="text"
+          placeholder="Product"
+          name="_productName"
+          defaultValue={""}
+          className="input-productName"
+          maxLength={10}
+        />
+        <input type="submit" value="Add" className="button-add" />
       </form>
+      {/*---------------------------------------------------------------*/}
       <br />
       <hr />
       <br />
@@ -56,7 +81,7 @@ export const MainControl = () => {
         <h3>Shopping List</h3>
         <br />
         {shopList.map((item, index) =>
-          shopList.length === 1 && item.productName === "" ? (
+          shopList.length === 0 ? (
             <p>No items in the list</p>
           ) : (
             <ol type="1" key={index}>
@@ -72,7 +97,13 @@ export const MainControl = () => {
             </ol>
           )
         )}
-        <input type="button" value="Reset" onClick={toReset} />
+        {<p>{showList()}</p>}
+        <input
+          type="button"
+          value="Reset"
+          onClick={toReset}
+          className="button-reset"
+        />
       </div>
     </div>
   );
