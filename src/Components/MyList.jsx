@@ -1,8 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import "../MyStyles/MainControl.css";
+import { jsPDF } from "jspdf";
+import { autoTable } from "jspdf-autotable";
 
 const MyList = ({ shopList, toReset, showList }) => {
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    const tableColumn = ["#", "Cantidad", "Producto"];
+    const tableRows = [];
+    shopList.forEach((item, index) => {
+      const rowData = [index + 1, item.cantidad, item.productName];
+      tableRows.push(rowData);
+    });
+    autoTable(doc, {
+      head: [tableColumn],
+      body: tableRows,
+    });
+    doc.save("shopping_list.pdf");
+  };
   return (
     <div className="container-mayor">
       <br />
@@ -38,6 +54,12 @@ const MyList = ({ shopList, toReset, showList }) => {
         <hr />
         <br></br>
       </div>
+      <input
+        type="button"
+        value="PDF"
+        onClick={generatePDF}
+        className="button-pdf"
+      ></input>
       <input
         type="button"
         value="Reset"

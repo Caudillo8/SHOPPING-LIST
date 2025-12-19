@@ -36,7 +36,8 @@
   box-shadow: black 2px 2px 5px;
 }
 .button-reset,
-.button-add {
+.button-add,
+.button-pdf {
   width: 60px;
   height: 30px;
   font-size: 16px;
@@ -83,7 +84,7 @@
 }
 .button-reset {
   position: relative;
-  left: 80%;
+  left: 60%;
   margin-top: 25px;
 }
 .cantidad {
