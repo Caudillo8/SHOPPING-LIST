@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -37,12 +39,15 @@
   height: 30px;
   font-size: 16px;
   font-weight: bold;
-  margin: 10px 5px;
+
+  /*margin: 10px 5px;*/
+
   color: white;
   background-color: blue;
   border-radius: 10px;
   box-shadow: black 2px 2px 5px;
 }
+
 .input-productName {
   width: 120px;
   height: 25px;
@@ -51,4 +56,26 @@
   border-radius: 5px;
   border: solid gray 1px;
   margin-right: 10px;
+  font-family: "Permanent Marker", cursive;
+}
+.container_list,
+.list-ol {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.container_list h3,
+.showList {
+  text-align: center;
+  position: relative;
+  font-family: "Permanent Marker", cursive;
+}
+.container_list .button-reset {
+  position: absolute;
+  left: 56%;
+}
+.cantidad {
+  font-size: 18px;
+  font-weight: bold;
 }

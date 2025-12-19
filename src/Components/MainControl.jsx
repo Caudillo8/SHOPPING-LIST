@@ -56,7 +56,9 @@ export const MainControl = () => {
           onClick={sumar}
           className="button-cantidad"
         />
-        <span name="_cantidad">{cantidad}</span>
+        <span name="_cantidad" className="cantidad">
+          {cantidad}
+        </span>
         <input
           type="button"
           value="-"
@@ -70,6 +72,7 @@ export const MainControl = () => {
           defaultValue={""}
           className="input-productName"
           maxLength={10}
+          required
         />
         <input type="submit" value="Add" className="button-add" />
       </form>
@@ -77,14 +80,14 @@ export const MainControl = () => {
       <br />
       <hr />
       <br />
-      <div>
+      <div className="container_list">
         <h3>Shopping List</h3>
         <br />
         {shopList.map((item, index) =>
           shopList.length === 0 ? (
             <p>No items in the list</p>
           ) : (
-            <ol type="1" key={index}>
+            <ol type="1" key={index} className="list-ol">
               <li value={index + 1} name="itemList" id="itemList">
                 <b>Cant :</b> {item.cantidad}
                 <b> Producto: </b> {item.productName}
@@ -97,7 +100,9 @@ export const MainControl = () => {
             </ol>
           )
         )}
-        {<p>{showList()}</p>}
+        {<p className="showList">{showList()}</p>}
+        <hr />
+        <br></br>
         <input
           type="button"
           value="Reset"
