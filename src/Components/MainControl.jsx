@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import "../MyStyles/MainControl.css";
-import _default from "eslint-plugin-react-refresh";
+import MyList from "./MyList.jsx";
 
 export const MainControl = () => {
   /*-------------------STATE CANTIDAD-------------*/
   const initial_counter = 0;
   const [cantidad, setCount] = useState(initial_counter);
+  const [shopList, setShopList] = useState([]);
   /*------------------SUMAR ---------------------*/
   const sumar = () => {
     setCount(cantidad + 1);
@@ -17,26 +18,23 @@ export const MainControl = () => {
   };
 
   /*------------------  TO LIST  addList  ---------------------*/
-  const [shopList, setShopList] = useState([]);
+
   const addList = (e) => {
     if (e) e.preventDefault();
     if (cantidad === 0) {
       alert("Cantidad > 0 ");
       return;
     }
-    e.preventDefault();
     const productName = e.target.elements._productName.value;
-    //shopList.push({ productName: productName, cantidad: cantidad });
     setShopList([
-      ...shopList /*tomar lo que se va acumulando*/,
+      ...shopList,
       {
         productName: productName,
         cantidad: cantidad,
-      } /*agregar con el setter*/,
+      },
     ]);
-    /*showList(); este siempre lo muestra con el retraso del estado*/
-    formList.reset(); //el campo texto se limpia
-    setCount(initial_counter); //la cantidad se resetea
+    document.getElementById("formList").reset();
+    setCount(initial_counter);
   };
   /*------------------  R E S E T ---------------------*/
   const toReset = () => {
@@ -61,12 +59,7 @@ export const MainControl = () => {
           onClick={sumar}
           className="button-cantidad"
         />
-        <span
-          name="_cantidad"
-          className="cantidad"
-          type="number"
-          readOnly={true}
-        >
+        <span className="cantidad" readOnly={true}>
           {cantidad}
         </span>
         <input
@@ -86,46 +79,7 @@ export const MainControl = () => {
         />
         <input type="submit" value="Add" className="button-add" />
       </form>
-      {/*---------------------------------------------------------------*/}
-      <br />
-      <hr />
-      <br />
-      <div className="container_list">
-        <h3>Shopping List</h3>
-        <br />
-        {shopList.map((item, index) =>
-          shopList.length === 0 ? (
-            <p>No items in the list</p>
-          ) : (
-            <ol type="1" key={index} className="list-ol">
-              <li
-                value={index + 1}
-                name="itemList"
-                id="itemList"
-                className="itemList"
-              >
-                <b>{index}</b>
-                <b>{item.cantidad}</b>
-                <b> {item.productName}</b>
-                <input
-                  className="check-box"
-                  type="checkbox"
-                  htmlFor="itemList"
-                />
-              </li>
-            </ol>
-          )
-        )}
-        {<p className="showList">{showList()}</p>}
-        <hr />
-        <br></br>
-      </div>
-      <input
-        type="button"
-        value="Reset"
-        onClick={toReset}
-        className="button-reset"
-      />
+      <MyList shopList={shopList} toReset={toReset} showList={showList} />
     </div>
   );
 };
