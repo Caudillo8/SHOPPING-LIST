@@ -6,9 +6,11 @@
   box-sizing: border-box;
 }
 .container_mayor {
+  position: absolute;
   width: fit-content;
-  margin: auto;
-  min-height: fit-content;
+
+  left: 30%;
+  height: max-content;
   background-color: rgb(154, 204, 62);
   padding: 20px;
   border: solid black 2px;
@@ -39,9 +41,7 @@
   height: 30px;
   font-size: 16px;
   font-weight: bold;
-
   /*margin: 10px 5px;*/
-
   color: white;
   background-color: blue;
   border-radius: 10px;
@@ -56,8 +56,18 @@
   border-radius: 5px;
   border: solid gray 1px;
   margin-right: 10px;
+}
+.itemList {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-around;
+  font-size: 20px;
   font-family: "Permanent Marker", cursive;
 }
+
 .container_list,
 .list-ol {
   background-color: white;
@@ -71,9 +81,10 @@
   position: relative;
   font-family: "Permanent Marker", cursive;
 }
-.container_list .button-reset {
-  position: absolute;
-  left: 56%;
+.button-reset {
+  position: relative;
+  left: 80%;
+  margin-top: 25px;
 }
 .cantidad {
   font-size: 18px;

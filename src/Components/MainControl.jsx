@@ -19,6 +19,11 @@ export const MainControl = () => {
   /*------------------  TO LIST  addList  ---------------------*/
   const [shopList, setShopList] = useState([]);
   const addList = (e) => {
+    if (e) e.preventDefault();
+    if (cantidad === 0) {
+      alert("Cantidad > 0 ");
+      return;
+    }
     e.preventDefault();
     const productName = e.target.elements._productName.value;
     //shopList.push({ productName: productName, cantidad: cantidad });
@@ -56,7 +61,12 @@ export const MainControl = () => {
           onClick={sumar}
           className="button-cantidad"
         />
-        <span name="_cantidad" className="cantidad">
+        <span
+          name="_cantidad"
+          className="cantidad"
+          type="number"
+          readOnly={true}
+        >
           {cantidad}
         </span>
         <input
@@ -88,9 +98,15 @@ export const MainControl = () => {
             <p>No items in the list</p>
           ) : (
             <ol type="1" key={index} className="list-ol">
-              <li value={index + 1} name="itemList" id="itemList">
-                <b>Cant :</b> {item.cantidad}
-                <b> Producto: </b> {item.productName}
+              <li
+                value={index + 1}
+                name="itemList"
+                id="itemList"
+                className="itemList"
+              >
+                <b>{index}</b>
+                <b>{item.cantidad}</b>
+                <b> {item.productName}</b>
                 <input
                   className="check-box"
                   type="checkbox"
@@ -103,13 +119,13 @@ export const MainControl = () => {
         {<p className="showList">{showList()}</p>}
         <hr />
         <br></br>
-        <input
-          type="button"
-          value="Reset"
-          onClick={toReset}
-          className="button-reset"
-        />
       </div>
+      <input
+        type="button"
+        value="Reset"
+        onClick={toReset}
+        className="button-reset"
+      />
     </div>
   );
 };
